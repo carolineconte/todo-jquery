@@ -29,6 +29,15 @@
 
 <script>
 
+  // Adicionar o evento de exclusão diretamente aos ícones de exclusão
+  $('.container').on('click', '.fa-trash-can', function () {
+    let taskContainer = $(this).closest('.task');
+    taskContainer.fadeOut(function () {
+      taskContainer.remove();
+    });
+  });
+
+
   $('#newTaskInput').on('keyup', function (e) {
 
     let newTaskValue = $('#newTaskInput').val();
@@ -43,17 +52,12 @@
       //Icons
       let iconsContainer = $('<div class="iconsContainer"></div>')
       //icons with functionality
-      let deleteIcon = $('<i class="fa-solid fa-trash-can delete"></i>')
-        .click(function () {
-          let taskContainer = $(this).closest('.task'); // select this task container container 
-          taskContainer.fadeOut(function () {
-            taskContainer.remove() // remove from the doc
-          }); 
-        });
+      let deleteIcon = $('<i class="fa-solid fa-trash-can"></i>')
 
       let checkIcon = $('<i class="fa-solid fa-check"></i>').click(function () {
         let taskContainer = $(this).closest('.task');
         taskContainer.fadeOut('slow', function () {
+          taskContainer.remove('.fa-check')
           $('.completed').append(taskContainer);
           taskContainer.fadeIn('slow');
         });
