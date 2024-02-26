@@ -1,0 +1,83 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f4f3ee;
+}
+
+.container {
+  width: 80%;
+  border: 2px solid #374375;
+  padding: 2rem;
+  border-radius: 15px;
+  background-color: #37437546;
+}
+
+input {
+  width: 100%;
+  border: none;
+  padding: 1rem;
+  margin-bottom: 2rem;
+  border-radius: 5px;
+  background-color: #fefefee9;
+  border: 1px solid #374375;
+  border-bottom: 3px solid #374375;
+  outline: none;
+}
+
+h3 {
+  color: white;
+  text-shadow: 2px 1px 3px #081238;
+  font-size: 1.5em;
+  border-bottom: 1px dashed ;
+}
+
+.notCompleted {
+  margin-bottom: 30px;
+}
+
+.notCompleted,
+.completed {
+  min-height: 200px;
+  text-transform: capitalize;
+}
+
+.task {
+  padding: 1rem;
+  border-radius: 2px;
+  width: 100%;
+  margin: .5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.task i {
+  color: #374375;
+  padding: .5rem;
+  border: 1px solid;
+  border-radius: 50%;
+}
+
+.task i:hover {
+  cursor: pointer;
+  background-color: #37437552;
+  color: white;
+}
+
+.notCompleted .task {
+  background-color: white;
+}
+
+.completed .task {
+  background-color: #cbf3d28e;
+
+}

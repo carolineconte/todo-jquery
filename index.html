@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>To Do - jQuery</title>
+  <!-- styles -->
+  <link rel="stylesheet" href="style.css">
+  <!-- jquery -->
+  <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+    crossorigin="anonymous"> </script>
+  <!-- incons -->
+  <script src="https://kit.fontawesome.com/fac993a757.js" crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+  <div class="container">
+    <input type="text" id="newTaskInput" placeholder="Add a Task">
+    <div class="notCompleted">
+      <h3>To Do</h3>
+    </div>
+    <div class="completed">
+      <h3>Completed</h3>
+    </div>
+  </div>
+</body>
+
+<script>
+
+  $('#newTaskInput').on('keyup', function (e) {
+
+    let newTaskValue = $('#newTaskInput').val();
+
+    if (e.keyCode == 13) {
+      if (newTaskValue === '') {
+        return alert('No text')
+      };
+
+      //criar o container com o texto
+      let newTaskContainer = $('<div class="task"></div>').text(newTaskValue);
+      //Icons
+      let iconsContainer = $('<div class="iconsContainer"></div>')
+      //icons with functionality
+      let deleteIcon = $('<i class="fa-solid fa-trash-can delete"></i>')
+        .click(function () {
+          let taskContainer = $(this).closest('.task'); // select this task container container 
+          taskContainer.fadeOut(function () {
+            taskContainer.remove() // remove from the doc
+          }); 
+        });
+
+      let checkIcon = $('<i class="fa-solid fa-check"></i>').click(function () {
+        let taskContainer = $(this).closest('.task');
+        taskContainer.fadeOut('slow', function () {
+          $('.completed').append(taskContainer);
+          taskContainer.fadeIn('slow');
+        });
+        taskContainer.remove()
+      });
+
+      iconsContainer.append(deleteIcon, checkIcon)
+
+      //append new rask
+      newTaskContainer.append(iconsContainer)
+
+      //adicionar a lista de nao completados
+      $('.notCompleted').append(newTaskContainer);
+
+      // Clear input
+      $('#newTaskInput').val('');
+    }
+
+  })
+</script>
+
+</html>
